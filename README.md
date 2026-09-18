@@ -1,20 +1,30 @@
 # Hawcx Agent Manager
 
-Downloads for the Hawcx Agent Manager desktop app. This repository holds
-releases only. The source code is maintained privately by Hawcx.
+Downloads for the Hawcx Agent Manager desktop app.
 
 ## Download
 
-Latest release: <https://github.com/hawcx/hawcx_agent_manager/releases/latest>
+All links below point at the **[latest release](https://github.com/hawcx/hawcx_agent_manager/releases/latest)**.
+Older versions are on the [releases page](https://github.com/hawcx/hawcx_agent_manager/releases).
 
-| Platform | File | Notes |
+| Platform | Download | Notes |
 | --- | --- | --- |
-| macOS (Apple silicon and Intel) | `HawcxManager-<version>-macos-universal.pkg` | Signed and notarized installer. `HawcxManager-<version>-macos-universal-app.tar.gz` is the bare `.app` for MDM tooling that prefers one. |
-| Windows 10/11 x64 | `HawcxManager-<version>-windows-x64.msi` | For managed deployment (Intune and similar). `HawcxManager-<version>-windows-x64-setup.exe` is the interactive installer. Windows builds are not yet code-signed, so SmartScreen warns on first run. |
-| Linux x86_64 | `HawcxManager-<version>-linux-amd64.deb` | Debian and Ubuntu. `HawcxManager-<version>-linux-x86_64.AppImage` is the portable build. |
+| macOS (Apple silicon and Intel) | [Latest `.pkg`](https://github.com/hawcx/hawcx_agent_manager/releases/latest) | Signed and notarized installer. The `-macos-universal-app.tar.gz` asset is the bare `.app` for MDM tooling that prefers one. |
+| Windows 10/11 x64 | [Latest `.msi`](https://github.com/hawcx/hawcx_agent_manager/releases/latest) | For managed deployment (Intune and similar). The `-windows-x64-setup.exe` asset is the interactive installer. Windows builds are not yet code-signed, so SmartScreen warns on first run. |
+| Linux x86_64 | [Latest `.deb`](https://github.com/hawcx/hawcx_agent_manager/releases/latest) | Debian and Ubuntu. The `-linux-x86_64.AppImage` asset is the portable build. |
 
-Direct download URLs follow a fixed pattern, suitable for scripts and MDM
-fetches:
+Asset names follow `HawcxManager-<version>-<platform>.<ext>`, for example
+`HawcxManager-0.4.49-macos-universal.pkg`.
+
+### Direct URLs for scripts and MDM
+
+Latest release, by asset name:
+
+```
+https://github.com/hawcx/hawcx_agent_manager/releases/latest/download/<file>
+```
+
+A specific version:
 
 ```
 https://github.com/hawcx/hawcx_agent_manager/releases/download/v<version>/<file>
