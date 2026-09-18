@@ -23,8 +23,8 @@ https://github.com/hawcx/hawcx_agent_manager/releases/download/v<version>/<file>
 ## Configuration
 
 The installer does not carry tenant configuration. Your Hawcx deployment
-runbook delivers a `manager.env` alongside the app; the app does not connect to
-anything until that file is in place.
+runbook delivers a `manager.env` alongside the app, which the app reads at
+startup to find your tenant's services.
 
 ## Support
 
