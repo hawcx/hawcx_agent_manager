@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hawcx Agent Manager downloads</title>
+<meta name="description" content="Download Hawcx Agent Manager for macOS, Windows, and Linux, with deployment, verification, and configuration notes for IT administrators.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E7C86'/%3E%3Cpath d='M9 8v16M23 8v16M9 16h14' stroke='%23fff' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F9FB;
+    --panel: #FFFFFF;
+    --ink: #0F1A2B;
+    --slate: #55657A;
+    --line: #D7DEE7;
+    --line-strong: #B9C4D1;
+    --teal: #0E7C86;
+    --teal-ink: #0A5A61;
+    --teal-tint: #E3F3F4;
+    --amber: #9A4B00;
+    --amber-tint: #FBEFE2;
+    --mono-bg: #EEF2F6;
+    --focus: #0E7C86;
+    --radius-panel: 14px;
+    --radius-control: 9px;
+    --sans: "Instrument Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0B1220; --panel: #111A2B; --ink: #E7EDF4; --slate: #9FADBE;
+      --line: #223047; --line-strong: #34465F; --teal: #3FB8C4; --teal-ink: #7AD3DB;
+      --teal-tint: #0F2A31; --amber: #F0A560; --amber-tint: #2E1E0E; --mono-bg: #0E1626; --focus: #3FB8C4;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0B1220; --panel: #111A2B; --ink: #E7EDF4; --slate: #9FADBE;
+    --line: #223047; --line-strong: #34465F; --teal: #3FB8C4; --teal-ink: #7AD3DB;
+    --teal-tint: #0F2A31; --amber: #F0A560; --amber-tint: #2E1E0E; --mono-bg: #0E1626; --focus: #3FB8C4;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--sans); font-size: 15px; line-height: 1.55;
+    font-feature-settings: "ss01", "cv11";
+  }
+  a { color: var(--teal-ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { color: var(--teal); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+  code, kbd, pre { font-family: var(--mono); font-size: 0.92em; }
+  code { background: var(--mono-bg); padding: 0.1em 0.4em; border-radius: 5px; }
+  pre {
+    margin: 0; padding: 14px 16px; background: var(--mono-bg); border: 1px solid var(--line);
+    border-radius: var(--radius-control); overflow-x: auto; line-height: 1.5; font-size: 13px;
+  }
+  pre code { background: none; padding: 0; font-size: inherit; }
+  /* Grid and flex items default to min-width:auto, so one long command line would widen the whole page.
+     Every container on the path from a <pre> to <body> opts out of that. */
+  main, section, .wrap, .hero > *, .release > *, .primary > *, .others > *, .block .wrap > *, .body > *,
+  [role="tabpanel"] > *, .step > *, .kv > *, .table-scroll { min-width: 0; max-width: 100%; }
+  h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.015em; line-height: 1.15; }
+  h1 { font-size: clamp(30px, 4.6vw, 44px); letter-spacing: -0.025em; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 16px; }
+  p { margin: 0; max-width: 62ch; }
+  p + p { margin-top: 0.8em; }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--panel); padding: 8px 12px; border-radius: 6px; }
+  .skip:focus { left: 12px; z-index: 10; }
+
+  .wrap { width: min(100% - 40px, 1040px); margin-inline: auto; }
+  @media (max-width: 520px) { .wrap { width: calc(100% - 32px); } }
+
+  header.top {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px;
+    padding-block: 18px; border-bottom: 1px solid var(--line);
+  }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 600; font-size: 15px; white-space: nowrap; }
+  .brand svg { width: 26px; height: 26px; }
+  .brand span { color: var(--slate); font-weight: 500; }
+  nav.links { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; }
+  nav.links a { color: var(--slate); text-decoration: none; }
+  nav.links a:hover { color: var(--ink); }
+
+  .hero { padding-block: 56px 40px; display: grid; gap: 28px; }
+  .hero .lead { font-size: 17px; color: var(--slate); max-width: 56ch; margin-top: 14px; }
+
+  .release {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-panel);
+    padding: 26px 28px; display: grid; gap: 22px;
+  }
+  .release-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; }
+  .release-head h2 { font-size: 15px; font-weight: 500; color: var(--slate); }
+  .release-head .version { font-size: 15px; color: var(--ink); font-weight: 600; }
+  .release-head .version small { font-weight: 400; color: var(--slate); margin-left: 10px; }
+
+  .primary { display: grid; grid-template-columns: auto 1fr; gap: 18px 22px; align-items: center; }
+  @media (max-width: 640px) { .primary { grid-template-columns: 1fr; } }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px; padding: 14px 20px 14px 16px;
+    background: var(--teal); color: #fff; border-radius: var(--radius-control); text-decoration: none;
+    font-weight: 600; font-size: 16px; border: 1px solid transparent; white-space: nowrap;
+  }
+  .btn:hover { background: var(--teal-ink); color: #fff; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn.disabled { background: var(--mono-bg); color: var(--slate); border-color: var(--line); pointer-events: none; }
+  .primary .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, max-content)); gap: 6px 28px; font-size: 14px; color: var(--slate); }
+  .facts div b { display: block; color: var(--ink); font-weight: 500; }
+  .facts .file { font-family: var(--mono); font-size: 12.5px; word-break: break-all; }
+
+  .status { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px 3px 7px; border-radius: 999px; font-size: 12.5px; font-weight: 500; }
+  .status svg { width: 13px; height: 13px; }
+  .status.ok { background: var(--teal-tint); color: var(--teal-ink); }
+  .status.warn { background: var(--amber-tint); color: var(--amber); }
+  .status.muted { background: var(--mono-bg); color: var(--slate); }
+
+  .others { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 10px; }
+  .others h3 { font-size: 13.5px; font-weight: 500; color: var(--slate); }
+  .other-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px 18px; }
+  .other { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 12px; border: 1px solid var(--line); border-radius: var(--radius-control); text-decoration: none; color: var(--ink); font-size: 14px; }
+  .other:hover { border-color: var(--line-strong); color: var(--ink); }
+  .other .name { font-weight: 500; }
+  .other .meta { color: var(--slate); font-size: 12.5px; white-space: nowrap; }
+  .other.missing { color: var(--slate); border-style: dashed; }
+  .note { font-size: 13.5px; color: var(--slate); }
+  .note.warn { color: var(--amber); }
+
+  section.block { padding-block: 44px; border-top: 1px solid var(--line); }
+  section.block > .wrap { display: grid; grid-template-columns: 240px 1fr; gap: 24px 48px; }
+  @media (max-width: 800px) { section.block > .wrap { grid-template-columns: 1fr; } }
+  .block .intro p { color: var(--slate); font-size: 14px; margin-top: 10px; }
+  .block .body { display: grid; gap: 22px; min-width: 0; }
+
+  .tabs { display: inline-flex; gap: 4px; padding: 4px; background: var(--mono-bg); border-radius: 10px; }
+  .tab { appearance: none; border: 0; background: transparent; color: var(--slate); font: inherit; font-weight: 500; padding: 7px 14px; border-radius: 7px; cursor: pointer; }
+  .tab[aria-selected="true"] { background: var(--panel); color: var(--ink); box-shadow: 0 1px 0 var(--line); }
+  .tab:hover { color: var(--ink); }
+  [role="tabpanel"] { display: grid; gap: 22px; }
+  [role="tabpanel"][hidden] { display: none; }
+  .step { display: grid; gap: 8px; }
+  .step h3 { font-weight: 600; }
+  .step p { color: var(--slate); font-size: 14px; }
+  .kv { display: grid; grid-template-columns: max-content 1fr; gap: 6px 20px; font-size: 14px; }
+  .kv dt { color: var(--slate); }
+  .kv dd { margin: 0; min-width: 0; word-break: break-word; }
+  .kv dd code { font-size: 12.5px; }
+  .callout { border-left: 3px solid var(--amber); background: var(--amber-tint); padding: 12px 14px; border-radius: 0 var(--radius-control) var(--radius-control) 0; font-size: 14px; }
+  .callout.ok { border-color: var(--teal); background: var(--teal-tint); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; font-weight: 500; color: var(--slate); padding: 0 12px 10px 0; border-bottom: 1px solid var(--line); }
+  td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  .plat { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+  .plat span { padding: 1px 7px; border-radius: 999px; background: var(--mono-bg); color: var(--slate); font-size: 12px; }
+  .plat span.has { background: var(--teal-tint); color: var(--teal-ink); }
+  .table-scroll { overflow-x: auto; }
+
+  footer { border-top: 1px solid var(--line); padding-block: 28px 40px; font-size: 13.5px; color: var(--slate); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+  footer a { color: var(--slate); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .btn, .other, .tab { transition: background-color .15s ease, border-color .15s ease, color .15s ease; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#download">Skip to download</a>
+
+<header class="top wrap">
+  <a class="brand" href="./" aria-label="Hawcx Agent Manager">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0E7C86"/><path d="M9 8v16M23 8v16M9 16h14" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg>
+    Hawcx <span>Agent Manager</span>
+  </a>
+  <nav class="links" aria-label="Page">
+    <a href="#deploy">Deploy</a>
+    <a href="#verify">Verify</a>
+    <a href="#configure">Configure</a>
+    <a href="https://github.com/hawcx/hawcx_agent_manager/releases">All releases</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero wrap">
+    <div>
+      <h1>Hawcx Agent Manager</h1>
+      <p class="lead">The desktop app that enrolls an employee's machine and the AI agents running on it with your Hawcx deployment. IT installs it through Intune or Jamf; your deployment runbook supplies the configuration.</p>
+    </div>
+
+    <div class="release" id="download" aria-live="polite">
+      <div class="release-head">
+        <h2>Current release</h2>
+        <div class="version" id="rel-version">Loading the latest release<small></small></div>
+      </div>
+
+      <div class="primary">
+        <a class="btn" id="primary-btn" href="https://github.com/hawcx/hawcx_agent_manager/releases/latest">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/></svg>
+          <span id="primary-label">Open the latest release</span>
+        </a>
+        <div class="facts" id="primary-facts">
+          <div>Detecting your platform<b>&nbsp;</b></div>
+        </div>
+      </div>
+
+      <div class="others">
+        <h3>Other installers for this release</h3>
+        <div class="other-list" id="other-list"></div>
+        <p class="note" id="release-note"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="deploy">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Deploy</h2>
+        <p>Install by hand for a test machine, or silently through your MDM for a fleet. Pick your platform.</p>
+      </div>
+      <div class="body">
+        <div class="tabs" role="tablist" aria-label="Platform">
+          <button class="tab" role="tab" id="tab-macos" aria-controls="panel-macos" aria-selected="true">macOS</button>
+          <button class="tab" role="tab" id="tab-windows" aria-controls="panel-windows" aria-selected="false" tabindex="-1">Windows</button>
+          <button class="tab" role="tab" id="tab-linux" aria-controls="panel-linux" aria-selected="false" tabindex="-1">Linux</button>
+        </div>
+
+        <div role="tabpanel" id="panel-macos" aria-labelledby="tab-macos">
+          <dl class="kv">
+            <dt>Requires</dt><dd>macOS on Apple silicon or Intel. One universal build covers both.</dd>
+            <dt>Package</dt><dd><code>HawcxManager-&lt;version&gt;-macos-universal.pkg</code>, signed with a Developer ID and notarized by Apple.</dd>
+            <dt>Installs</dt><dd><code>/Applications/Hawcx Manager.app</code>, a system service, and a local service account named <code>_hawcxauth</code>. Administrator rights are required.</dd>
+            <dt>Config file</dt><dd><code>/etc/hawcx/manager.env</code></dd>
+          </dl>
+          <div class="step">
+            <h3>Install on one machine</h3>
+            <p>Double-click the package, or from Terminal:</p>
+            <pre><code>sudo installer -pkg HawcxManager-&lt;version&gt;-macos-universal.pkg -target /</code></pre>
+          </div>
+          <div class="step">
+            <h3>Deploy with Jamf</h3>
+            <p>Upload the package as-is and scope it with a policy that also places <code>manager.env</code> at the path above. The app reads that file at startup; without it, it has nothing to connect to.</p>
+          </div>
+          <div class="step">
+            <h3>Remove</h3>
+            <p>Dragging the app to the Trash does not uninstall it and leaves the service in place. Use the uninstaller, which stays on the machine outside the app bundle:</p>
+            <pre><code>sudo /opt/hawcx/bin/hawcx-uninstall.sh --dry-run   # show the plan, change nothing
+sudo /opt/hawcx/bin/hawcx-uninstall.sh             # remove, keep the enrolled identity
+sudo /opt/hawcx/bin/hawcx-uninstall.sh --purge     # remove and destroy the enrolled identity</code></pre>
+            <p>The installer also offers a "Wipe clean first" choice on its Customize pane for re-enrolling a machine from scratch. It is off by default.</p>
+          </div>
+        </div>
+
+        <div role="tabpanel" id="panel-windows" aria-labelledby="tab-windows" hidden>
+          <dl class="kv">
+            <dt>Requires</dt><dd>Windows 11, 64-bit. The WebView2 runtime that ships with Windows 11.</dd>
+            <dt>Packages</dt><dd><code>HawcxManager-&lt;version&gt;-windows-x64.msi</code> for managed deployment. <code>HawcxManager-&lt;version&gt;-windows-x64-setup.exe</code> for interactive installs.</dd>
+            <dt>Installs</dt><dd>Per machine, for all users. Administrator rights are required.</dd>
+            <dt>Config file</dt><dd><code>C:\ProgramData\Hawcx\manager.env</code></dd>
+          </dl>
+          <div class="callout">Windows installers are not code-signed yet. SmartScreen shows a warning on interactive installs, and some managed fleets block unsigned installers. Deploy the MSI through your MDM from this page's URLs rather than by forwarding the file.</div>
+          <div class="step">
+            <h3>Install silently</h3>
+            <pre><code>msiexec /i HawcxManager-&lt;version&gt;-windows-x64.msi /qn /norestart</code></pre>
+            <p>The interactive installer also accepts <code>/S</code> for a silent install.</p>
+          </div>
+          <div class="step">
+            <h3>Deploy with Intune</h3>
+            <p>Add the MSI as a line-of-business app, assign it as required, and use a separate configuration policy or script to place <code>manager.env</code> at the path above before the app first runs. An app launched from the Start menu inherits no shell environment, so the file is the only way configuration reaches it.</p>
+          </div>
+          <div class="step">
+            <h3>Remove</h3>
+            <p>Uninstall from Settings, Apps, or silently:</p>
+            <pre><code>msiexec /x HawcxManager-&lt;version&gt;-windows-x64.msi /qn /norestart</code></pre>
+          </div>
+        </div>
+
+        <div role="tabpanel" id="panel-linux" aria-labelledby="tab-linux" hidden>
+          <dl class="kv">
+            <dt>Requires</dt><dd>x86_64. Debian or Ubuntu for the <code>.deb</code>; any distribution for the AppImage.</dd>
+            <dt>Config file</dt><dd><code>/etc/hawcx/manager.env</code></dd>
+          </dl>
+          <div class="callout ok">Linux builds are published for evaluation. Talk to Hawcx before rolling them out to a fleet.</div>
+          <div class="step">
+            <h3>Install</h3>
+            <pre><code>sudo apt install ./HawcxManager-&lt;version&gt;-linux-amd64.deb</code></pre>
+            <p>Or make the AppImage executable and run it directly:</p>
+            <pre><code>chmod +x HawcxManager-&lt;version&gt;-linux-x86_64.AppImage
+./HawcxManager-&lt;version&gt;-linux-x86_64.AppImage</code></pre>
+          </div>
+          <div class="step">
+            <h3>Remove</h3>
+            <pre><code>sudo apt remove hawcx-manager</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="verify">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Verify what you downloaded</h2>
+        <p>Check the package before it goes into your MDM.</p>
+      </div>
+      <div class="body">
+        <div class="step">
+          <h3>macOS</h3>
+          <p>Both commands should name a Developer ID Installer certificate belonging to Hawcx and report the package as notarized.</p>
+          <pre><code>pkgutil --check-signature HawcxManager-&lt;version&gt;-macos-universal.pkg
+spctl --assess --type install -vv HawcxManager-&lt;version&gt;-macos-universal.pkg</code></pre>
+        </div>
+        <div class="step">
+          <h3>Windows and Linux</h3>
+          <p>These builds carry no signature yet. Download them only from this page or the releases list on GitHub, over HTTPS, and keep the URL you used in your deployment record so the source is auditable.</p>
+        </div>
+        <div class="step">
+          <h3>Stable URLs for scripts</h3>
+          <p>The latest release, by file name, and a pinned version:</p>
+          <pre><code>https://github.com/hawcx/hawcx_agent_manager/releases/latest/download/&lt;file&gt;
+https://github.com/hawcx/hawcx_agent_manager/releases/download/v&lt;version&gt;/&lt;file&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="configure">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Configure</h2>
+        <p>The installer carries no tenant settings. One plain-text file supplies them.</p>
+      </div>
+      <div class="body">
+        <p>Your Hawcx deployment runbook produces <code>manager.env</code> from a template with the values that only exist once your environment is set up: the identity provider's authorize and token endpoints, the app registration's client ID, and the addresses of the services in your deployment. Your MDM places the file next to the app.</p>
+        <dl class="kv">
+          <dt>macOS and Linux</dt><dd><code>/etc/hawcx/manager.env</code>, owned by root, readable by everyone.</dd>
+          <dt>Windows</dt><dd><code>C:\ProgramData\Hawcx\manager.env</code></dd>
+          <dt>Contains</dt><dd>Endpoints and identifiers only. The app is a public OAuth client and needs no secret, so nothing in the file is one. Keys the app does not recognize are ignored, so copy names exactly from the template.</dd>
+          <dt>When it is read</dt><dd>At startup. Update the file and relaunch the app to apply a change.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="releases">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Recent releases</h2>
+        <p>Versions follow semantic versioning. Each release lists which platforms it ships for.</p>
+      </div>
+      <div class="body">
+        <div class="table-scroll">
+          <table id="releases-table">
+            <thead><tr><th>Version</th><th>Released</th><th>Platforms</th><th>Notes</th></tr></thead>
+            <tbody><tr><td colspan="4" class="note">Loading releases</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div>Hawcx Agent Manager is distributed by Hawcx. Contact Hawcx through your existing support channel; issues on this repository are not monitored.</div>
+  <div><a href="https://github.com/hawcx/hawcx_agent_manager/releases">Releases on GitHub</a></div>
+</footer>
+
+<script>
+(function () {
+  const REPO = 'hawcx/hawcx_agent_manager';
+  const API = 'https://api.github.com/repos/' + REPO + '/releases?per_page=15';
+  const LATEST_PAGE = 'https://github.com/' + REPO + '/releases/latest';
+
+  // Platform catalogue: which file is the primary installer for each platform and how we describe it.
+  const PLATFORMS = {
+    macos:   { label: 'macOS',   suffix: '-macos-universal.pkg',      alt: [{ suffix: '-macos-universal-app.tar.gz', name: 'macOS app bundle (.tar.gz)' }], status: { cls: 'ok', text: 'Signed and notarized' } },
+    windows: { label: 'Windows', suffix: '-windows-x64.msi',          alt: [{ suffix: '-windows-x64-setup.exe', name: 'Windows interactive installer (.exe)' }], status: { cls: 'warn', text: 'Not code-signed yet' } },
+    linux:   { label: 'Linux',   suffix: '-linux-amd64.deb',          alt: [{ suffix: '-linux-x86_64.AppImage', name: 'Linux AppImage' }], status: { cls: 'muted', text: 'Unsigned' } },
+  };
+  const NAMES = {
+    '-macos-universal.pkg': 'macOS installer (.pkg)',
+    '-windows-x64.msi': 'Windows installer (.msi)',
+    '-linux-amd64.deb': 'Linux package (.deb)',
+  };
+
+  function detectPlatform() {
+    const ua = navigator.userAgent || '';
+    const p = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+    if (/Mac/i.test(p) || /Macintosh/i.test(ua)) return 'macos';
+    if (/Win/i.test(p) || /Windows/i.test(ua)) return 'windows';
+    if (/Linux|X11/i.test(p + ua) && !/Android/i.test(ua)) return 'linux';
+    return 'macos';
+  }
+  function fmtSize(b) { return b >= 1048576 ? (b / 1048576).toFixed(1) + ' MB' : Math.round(b / 1024) + ' KB'; }
+  function fmtDate(s) { return new Date(s).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }); }
+  function findAsset(rel, suffix) { return (rel.assets || []).find(a => a.name.endsWith(suffix)); }
+  function platformsOf(rel) { return Object.keys(PLATFORMS).filter(k => findAsset(rel, PLATFORMS[k].suffix)); }
+  function statusPill(st) {
+    const icon = st.cls === 'ok'
+      ? '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>'
+      : '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 3.5v5"/><path d="M8 11.5h.01"/></svg>';
+    return '<span class="status ' + st.cls + '">' + icon + st.text + '</span>';
+  }
+  function el(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+
+  function render(releases) {
+    const stable = releases.filter(r => !r.draft && !r.prerelease);
+    const latest = stable[0];
+    if (!latest) return fallback('No stable release is published yet.');
+    const ver = latest.tag_name.replace(/^v/, '');
+    const plat = detectPlatform();
+    const cfg = PLATFORMS[plat];
+
+    el('rel-version').innerHTML = 'Version ' + esc(ver) + '<small>' + esc(fmtDate(latest.published_at)) + '</small>';
+
+    // Primary button: the viewer's platform from the latest release, or the most recent release that has it.
+    let asset = findAsset(latest, cfg.suffix), fromRel = latest;
+    if (!asset) {
+      fromRel = stable.find(r => findAsset(r, cfg.suffix));
+      asset = fromRel ? findAsset(fromRel, cfg.suffix) : null;
+    }
+    const btn = el('primary-btn');
+    if (asset) {
+      const fromVer = fromRel.tag_name.replace(/^v/, '');
+      btn.href = asset.browser_download_url;
+      el('primary-label').textContent = 'Download for ' + cfg.label + (fromRel === latest ? '' : ' (' + fromVer + ')');
+      el('primary-facts').innerHTML =
+        '<div>Version<b>' + esc(fromVer) + '</b></div>' +
+        '<div>Size<b>' + esc(fmtSize(asset.size)) + '</b></div>' +
+        '<div>Signing<b>' + statusPill(cfg.status) + '</b></div>' +
+        '<div style="grid-column:1/-1">File<b class="file">' + esc(asset.name) + '</b></div>';
+      el('release-note').textContent = fromRel === latest ? ''
+        : 'Version ' + ver + ' has no ' + cfg.label + ' build yet, so the button points at ' + fromVer + ', the most recent release that has one.';
+    } else {
+      btn.classList.add('disabled');
+      el('primary-label').textContent = 'No ' + cfg.label + ' build published';
+      el('primary-facts').innerHTML = '<div>Version<b>' + esc(ver) + '</b></div>';
+    }
+
+    // Other installers for the latest release: every platform's primary and alternates, marking absent ones.
+    const rows = [];
+    Object.keys(PLATFORMS).forEach(k => {
+      const c = PLATFORMS[k];
+      const all = [{ suffix: c.suffix, name: NAMES[c.suffix] }].concat(c.alt);
+      all.forEach(f => {
+        const a = findAsset(latest, f.suffix);
+        if (a) rows.push('<a class="other" href="' + esc(a.browser_download_url) + '"><span class="name">' + esc(f.name) + '</span><span class="meta">' + esc(fmtSize(a.size)) + '</span></a>');
+        else rows.push('<span class="other missing"><span class="name">' + esc(f.name) + '</span><span class="meta">not in ' + esc(ver) + '</span></span>');
+      });
+    });
+    el('other-list').innerHTML = rows.join('');
+
+    // Recent releases table.
+    const body = stable.slice(0, 10).map(r => {
+      const have = platformsOf(r);
+      const pills = Object.keys(PLATFORMS).map(k => '<span class="' + (have.includes(k) ? 'has' : '') + '">' + PLATFORMS[k].label + '</span>').join('');
+      return '<tr><td><a href="' + esc(r.html_url) + '">' + esc(r.tag_name) + '</a></td><td>' + esc(fmtDate(r.published_at)) + '</td><td><span class="plat">' + pills + '</span></td><td class="note">' + (have.length === 3 ? 'All platforms' : 'Partial release') + '</td></tr>';
+    }).join('');
+    el('releases-table').querySelector('tbody').innerHTML = body;
+  }
+
+  function fallback(msg) {
+    el('rel-version').innerHTML = 'Latest release<small></small>';
+    el('primary-label').textContent = 'Open the latest release on GitHub';
+    el('primary-btn').href = LATEST_PAGE;
+    el('primary-facts').innerHTML = '<div class="note">' + esc(msg) + '</div>';
+    el('other-list').innerHTML = '';
+    el('releases-table').querySelector('tbody').innerHTML = '<tr><td colspan="4" class="note">Release history is on <a href="https://github.com/' + REPO + '/releases">GitHub</a>.</td></tr>';
+  }
+
+  fetch(API, { headers: { Accept: 'application/vnd.github+json' } })
+    .then(r => { if (!r.ok) throw new Error('GitHub API ' + r.status); return r.json(); })
+    .then(render)
+    .catch(() => fallback('Live release details are unavailable right now. The button opens the latest release page, which always has the current files.'));
+
+  // Tabs answer a click or arrow keys; the selected panel is the only visible one.
+  const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+  function select(tab) {
+    tabs.forEach(t => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(t));
+    t.addEventListener('keydown', e => {
+      const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      const n = tabs[(i + d + tabs.length) % tabs.length];
+      select(n); n.focus();
+    });
+  });
+  const detected = detectPlatform();
+  const initial = document.getElementById('tab-' + detected);
+  if (initial) select(initial);
+})();
+</script>
+</body>
+</html>
