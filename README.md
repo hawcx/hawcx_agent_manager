@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/mark.svg" width="64" height="64" alt="">
+  <a href="https://www.hawcx.com/"><img src="assets/hawcx-mark.png" width="160" alt="Hawcx"></a>
 </p>
 
 <h1 align="center">Hawcx Agent Manager</h1>
@@ -10,13 +10,13 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/hawcx/hawcx_agent_manager/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/hawcx/hawcx_agent_manager?display_name=tag&label=latest&color=0E7C86"></a>
+  <a href="https://github.com/hawcx/hawcx_agent_manager/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/hawcx/hawcx_agent_manager?display_name=tag&label=latest&color=0563e5"></a>
   <a href="https://github.com/hawcx/hawcx_agent_manager/releases/latest"><img alt="Release date" src="https://img.shields.io/github/release-date/hawcx/hawcx_agent_manager?label=released&color=55657A"></a>
   <a href="https://github.com/hawcx/hawcx_agent_manager/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/hawcx/hawcx_agent_manager/total?label=downloads&color=55657A"></a>
 </p>
 
 <p align="center">
-  <a href="https://hawcx.github.io/hawcx_agent_manager/"><img alt="Open the downloads page" src="https://img.shields.io/badge/Downloads%20page-hawcx.github.io-0E7C86?style=for-the-badge"></a>
+  <a href="https://hawcx.github.io/hawcx_agent_manager/"><img alt="Open the downloads page" src="https://img.shields.io/badge/Downloads%20page-hawcx.github.io-0563e5?style=for-the-badge"></a>
 </p>
 
 The [downloads page](https://hawcx.github.io/hawcx_agent_manager/) detects your platform, shows the current version and its signing status, and carries the full deployment notes. Everything below is the short version.
