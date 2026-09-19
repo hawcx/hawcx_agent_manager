@@ -63,6 +63,8 @@
   h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
   p { margin: 0; max-width: 62ch; }
   p + p { margin-top: 0.8em; }
+  /* The header is sticky, so an anchor jump must stop short of it or the section heading lands underneath. */
+  [id] { scroll-margin-top: 84px; }
   .skip { position: absolute; left: -999px; top: 8px; background: var(--panel); padding: 8px 12px; border-radius: 6px; color: var(--ink); }
   .skip:focus { left: 12px; z-index: 10; }
 
