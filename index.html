@@ -225,7 +225,7 @@
     <div class="wrap">
       <div class="intro">
         <h2>Deploy</h2>
-        <p>Install by hand for a test machine, or silently through your MDM for a fleet. Pick your platform.</p>
+        <p>Install manually for a test machine, or silently through your MDM for a fleet. Pick your platform.</p>
       </div>
       <div class="body">
         <div class="tabs" role="tablist" aria-label="Platform">
@@ -241,6 +241,7 @@
             <dt>Installs</dt><dd><code>/Applications/Hawcx Manager.app</code>, a system service, and a local service account named <code>_hawcxauth</code>. Administrator rights are required.</dd>
             <dt>Config file</dt><dd><code>/etc/hawcx/manager.env</code></dd>
           </dl>
+          <div class="callout info">macOS will ask you to allow Installer to "administer your computer". That is the standard prompt for any package that installs a system service, and it comes from macOS itself before the Hawcx package runs anything. Allow it, or deploy through your MDM, where no one is prompted.</div>
           <div class="step">
             <h3>Install on one machine</h3>
             <p>Double-click the package, or from Terminal:</p>

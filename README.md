@@ -43,7 +43,7 @@ Not every release ships every platform. The [releases list](https://github.com/h
 <details>
 <summary><strong>macOS</strong></summary>
 
-Installs `/Applications/Hawcx Manager.app`, a system service, and a local service account named `_hawcxauth`. Administrator rights are required.
+Installs `/Applications/Hawcx Manager.app`, a system service, and a local service account named `_hawcxauth`. Administrator rights are required: macOS will ask you to allow Installer to "administer your computer". That prompt comes from macOS itself, before the Hawcx package runs anything; MDM deployments are not prompted.
 
 ```sh
 sudo installer -pkg HawcxManager-<version>-macos-universal.pkg -target /
